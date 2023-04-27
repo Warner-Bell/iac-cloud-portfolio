@@ -8,8 +8,8 @@ cfn-lint $BKT_PATH
 
 aws cloudformation deploy \
   --stack-name "CRC-s3bucket" \
-  --s3-bucket $CFMTN_BUCKET \
+  --s3-bucket cfmtn-stacks-2023 \
   --template-file "$BKT_PATH" \
   --no-execute-changeset \
-  --tags group=cfn-networking \
+  --tags group=crc-bucket \
   --capabilities CAPABILITY_NAMED_IAM
