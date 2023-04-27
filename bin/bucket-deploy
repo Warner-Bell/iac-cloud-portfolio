@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+set -e # stop the execution of the script if it fails
+
+BKT_PATH="/workspace/cloud-resume-challenge/aws-code/s3Bucket.yaml"
+echo $BKT_PATH
+
+cfn-lint $BKT_PATH
+
+aws cloudformation deploy \
+  --stack-name "CRC-s3bucket" \
+  --s3-bucket $CFMTN_BUCKET \
+  --template-file "$BKT_PATH" \
+  --no-execute-changeset \
+  --tags group=cfn-networking \
+  --capabilities CAPABILITY_NAMED_IAM
