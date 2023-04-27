@@ -5,7 +5,6 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: warnerbell.com
-      AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
