@@ -4,6 +4,9 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
       BucketName: warnerbell.com
       AccessControl: PublicRead
       WebsiteConfiguration:
