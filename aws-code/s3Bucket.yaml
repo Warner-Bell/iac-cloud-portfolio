@@ -4,14 +4,14 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      OwnershipControls:
-        Rules:
-          - ObjectOwnership: BucketOwnerPreferred
       BucketName: warnerbell.com
       AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
     DeletionPolicy: Retain
 Outputs:
   WebsiteURL:
