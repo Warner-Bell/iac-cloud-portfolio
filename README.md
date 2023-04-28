@@ -1,4 +1,10 @@
 # AWS-Cloud-Resume
+## Project Background
+I recently happened accross the concept of this challenge and thought "That looks like a fun/useful little project I can do to learn and play in the cloud!"
+I found all the info [here.](https://cloudresumechallenge.dev/)  There's a book, a site and apparently a whole community surrounding this idea, I learned all the particulars by sniffing around there, but by then I had already determined I was gonna do this thing my way. 
+  
+I had previously created a "Secure Static Website on AWS" just as a lab project and tutorial for my youtube channel [@cloudoptimized](https://www.youtube.com/@cloudoptimized?sub_confirmation=1). That [project](https://youtu.be/gnj4yEO4I0I) was created using the AWS console only, I'm gonna do as much of this one as I can in "Infrastructure as Code". 
+
 ## Project Components
 1. Certifications
 2. HTML
