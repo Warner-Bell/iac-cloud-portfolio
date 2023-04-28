@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'My Cloud Resume Challenge website S3 bucket.'
+Description: 'My Cloud Resume Challenge website S3 buckets.'
 Resources:
-  S3Bucket:
+  S3Bucket1:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: warnerbell.com
@@ -9,12 +9,38 @@ Resources:
         IndexDocument: index.html
         ErrorDocument: error.html
     DeletionPolicy: Retain
+
+  BucketPolicy:
+    Type: "AWS::S3::BucketPolicy"
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Statement:
+          - Sid: "PublicReadAccess"
+            Effect: "Allow"
+            Principal: "*"
+            Action:
+              - "s3:GetObject"
+            Resource:
+              - !Join ["", ["arn:aws:s3:::", !Ref S3Bucket, "/*"]]
+
+  S3Bucket2:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: www.warnerbell.com
+    DeletionPolicy: Retain
+
+  S3Bucket3:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: logs.warnerbell.com
+    DeletionPolicy: Retain
     
 Outputs:
   WebsiteURL:
     Value:
       Fn::GetAtt:
-      - S3Bucket
+      - S3Bucket1
       - WebsiteURL
     Description: URL for website hosted on S3
   S3BucketSecureURL:
