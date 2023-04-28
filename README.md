@@ -1,5 +1,8 @@
+4/27/2023 
 # Cloud-Resume
+
 https://coming-soon.com
+
 ## Project Background
 I recently happened accross the concept of this challenge and thought :astonished:"That looks like a fun/useful little project I can do to learn and play in the cloud!"
 
@@ -12,6 +15,7 @@ That [project](https://youtu.be/gnj4yEO4I0I) was created using the AWS console o
 ![download](https://user-images.githubusercontent.com/100949697/235042052-0db3afd3-d34f-49ee-9f2f-d732d9568cbb.jpg)
 
 Whatever it is I'll be doing it with a smile...mostly..lol
+
 
 
 ## Project Components
