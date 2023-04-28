@@ -11,3 +11,9 @@ sudo ./sam/install
 
 #Verify the installation.
 sam --version
+
+#SAM CLI now collects telemetry to better understand customer needs.
+#You can OPT OUT and disable telemetry collection by setting the
+#environment variable SAM_CLI_TELEMETRY=0 in your shell.
+#Thanks for your help!
+SAM_CLI_TELEMETRY=0
