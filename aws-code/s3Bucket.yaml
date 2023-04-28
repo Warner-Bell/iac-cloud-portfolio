@@ -10,7 +10,7 @@ Resources:
         IndexDocument: index.html
         ErrorDocument: error.html
     #DeletionPolicy: Retain
-  MyBucketPolicy:
+  S3BucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: !Ref S3Bucket
