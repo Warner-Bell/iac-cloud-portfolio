@@ -4,7 +4,7 @@ Resources:
   S3Bucket1:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: warnerbell.com
+      BucketName: coming-soon.com
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
