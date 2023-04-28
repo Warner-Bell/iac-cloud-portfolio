@@ -14,13 +14,13 @@ Resources:
   S3Bucket2:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: www.warnerbell.com
+      BucketName: www.coming-soon.com
     DeletionPolicy: Retain
 
   S3Bucket3:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: logs.warnerbell.com
+      BucketName: logs.coming-soon.com
     #DeletionPolicy: Retain
     
 Outputs:
