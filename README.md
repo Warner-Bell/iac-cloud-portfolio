@@ -32,7 +32,7 @@ For my HTML you'll see an example of a basic configuration resume with basic HTM
 
 ### 3. CSS
 
-Same deal with the CSS, you'll see an example of a basic configuration resume with basic CSS within this code base but for the actual website I will be modifying a templates from HTML5UP.
+Same deal with the CSS, you'll see an example of a basic configuration resume with basic CSS within this code base but for the actual website I will be modifying a template from HTML5UP.
 
 ### 4. Static Website
 
