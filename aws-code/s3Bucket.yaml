@@ -21,7 +21,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: logs.warnerbell.com
-    DeletionPolicy: Retain
+    #DeletionPolicy: Retain
     
 Outputs:
   WebsiteURL:
