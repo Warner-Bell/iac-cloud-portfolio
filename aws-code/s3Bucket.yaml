@@ -1,6 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'My Cloud Resume Challenge website S3 buckets.'
+Description: 'My Cloud Resume Challenge website S3 bucket.'
 Resources:
+
   S3Bucket1:
     Type: AWS::S3::Bucket
     Properties:
@@ -9,20 +10,6 @@ Resources:
         IndexDocument: index.html
         ErrorDocument: error.html
     DeletionPolicy: Retain
-
-  BucketPolicy:
-    Type: "AWS::S3::BucketPolicy"
-    Properties:
-      Bucket: !Ref S3Bucket
-      PolicyDocument:
-        Statement:
-          - Sid: "PublicReadAccess"
-            Effect: "Allow"
-            Principal: "*"
-            Action:
-              - "s3:GetObject"
-            Resource:
-              - !Join ["", ["arn:aws:s3:::", !Ref S3Bucket, "/*"]]
 
   S3Bucket2:
     Type: AWS::S3::Bucket
