@@ -5,7 +5,9 @@ I recently happened accross the concept of this challenge and thought :astonishe
 
 I found all the info [here.](https://cloudresumechallenge.dev/)  There's a book, a site and apparently a whole community surrounding this idea, I learned all the particulars by sniffing around there, but by then I had already determined I was gonna do this thing my way! :sunglasses: (but stick to the outline)
   
-I had previously created a "Secure Static Website on AWS" just as a lab project and tutorial for my youtube channel [@cloudoptimized](https://www.youtube.com/@cloudoptimized?sub_confirmation=1). That [project](https://youtu.be/gnj4yEO4I0I) was created using the AWS console only, I'm gonna do as much of this one as I can in "Infrastructure as Code". 
+I had previously created a "Secure Static Website on AWS" just as a lab project and tutorial for my youtube channel [@cloudoptimized](https://www.youtube.com/@cloudoptimized?sub_confirmation=1). 
+
+That [project](https://youtu.be/gnj4yEO4I0I) was created using the AWS console only, I'm gonna do as much of this one as I can in "Infrastructure as Code". 
 
 ![download](https://user-images.githubusercontent.com/100949697/235042052-0db3afd3-d34f-49ee-9f2f-d732d9568cbb.jpg)
 
