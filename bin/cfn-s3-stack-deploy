@@ -4,7 +4,7 @@ set -e # stop the execution of the script if it fails
 BKT_PATH="/workspace/cloud-resume-challenge/aws-code/s3Bucket.yaml"
 echo $BKT_PATH
 
-cfn-lint $BKT_PATH
+cfn-lint validate $BKT_PATH
 
 aws cloudformation deploy \
   --stack-name "CRC-s3bucket" \

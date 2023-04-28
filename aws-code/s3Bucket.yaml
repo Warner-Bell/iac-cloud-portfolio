@@ -8,9 +8,6 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
-      OwnershipControls:
-        Rules:
-          - ObjectOwnership: BucketOwnerPreferred
     DeletionPolicy: Retain
 Outputs:
   WebsiteURL:
