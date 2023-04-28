@@ -35,6 +35,9 @@ For my HTML you'll see an example of a basic configuration resume with basic HTM
 Same deal with the CSS, you'll see an example of a basic configuration resume with basic CSS within this code base but for the actual website I will be modifying a templates from HTML5UP.
 
 ### 4. Static Website
+
+This will be a fully responsive static portfolio website hosted on AWS S3 essentially re-creating [this](https://medium.com/@Warner_Bell/build-a-secure-static-website-using-s3-cloudfront-acm-and-route-53-ab1a0aee1ef9) project using AWS CLI, CDK, and infrastructure as code, following the structure layed out by the cloud resume challenge where possible.
+
 ### 5. HTTPS
 ### 6. DNS
 ### 7. Javascript
