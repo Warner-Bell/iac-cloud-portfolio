@@ -1,0 +1,13 @@
+#Install AWS sam on linux https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip 
+
+#Verify the integrity and authenticity of the downloaded installer files by generating a hash value using the following command
+sha256sum aws-sam-cli-linux-x86_64.zip
+
+#Unzip the installation files into a directory of your choice. The following is an example, using the sam-installation subdirectory.
+unzip aws-sam-cli-linux-x86_64.zip -d sam
+
+#Install the AWS SAM CLI by running the install executable.
+sudo ./sam/install
+
+#Verify the installation.
+sam --version
