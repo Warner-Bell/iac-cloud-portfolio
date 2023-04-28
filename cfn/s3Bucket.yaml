@@ -9,13 +9,13 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
-    DeletionPolicy: Retain
+    #DeletionPolicy: Retain
 
   S3Bucket2:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: www.coming-soon.com
-    DeletionPolicy: Retain
+    #DeletionPolicy: Retain
 
   S3Bucket3:
     Type: AWS::S3::Bucket
