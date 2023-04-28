@@ -9,7 +9,7 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
-    DeletionPolicy: Retain
+    #DeletionPolicy: Retain
   MyBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
