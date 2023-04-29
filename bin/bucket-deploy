@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 set -e # stop the execution of the script if it fails
 
-BKT_PATH="/workspace/cloud-resume-challenge/aws-code/s3Bucket.yaml"
+BKT_PATH="/workspace/cloud-resume-challenge/cfn/s3Bucket.yaml"
 echo $BKT_PATH
 
 cfn-lint validate $BKT_PATH
