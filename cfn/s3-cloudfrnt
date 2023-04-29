@@ -1,4 +1,12 @@
-CloudFrontOriginAccessIdentity:
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'My Cloud Resume Challenge CloudFront Distro.'
+
+Parameters:
+  DomainName:
+    Type: warnerbell.com
+
+Resources:
+  CloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:

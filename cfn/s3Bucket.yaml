@@ -32,16 +32,22 @@ Resources:
                 - /*
       Bucket: !Ref S3Bucket1
 
-  S3Bucket2:
+  WWWBucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: www.warnerbell.com
+      AccessControl: BucketOwnerFullControl
+      WebsiteConfiguration:
+        RedirectAllRequestsTo:
+          HostName: warnerbell.com
+          Protocol: https
     #DeletionPolicy: Retain
 
   LogsBucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: logs.warnerbell.com
+      AccessControl: BucketOwnerFullControl
     #DeletionPolicy: Retain
   S3BucketPolicy:
     Type: 'AWS::S3::BucketPolicy'

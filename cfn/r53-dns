@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Create My Hosted Zone in Rt-53'
+Resources:
+  DNS:
+    Type: AWS::Route53::HostedZone
+    Properties: 
+      HostedZoneConfig:
+        Comment: 'CRC Portfolio Website' 
+      Name: 'www.warnerbell.com'
+    
+Outputs:
+  ZoneId:
+    Description: 'Hosted Zone Id'
+    Value:
+      Ref: DNS
