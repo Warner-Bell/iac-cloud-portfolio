@@ -1,28 +1,73 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'My Cloud Resume Challenge website S3 bucket.'
+Description: 'My Cloud Resume Challenge website S3 buckets.'
 Resources:
 
   S3Bucket1:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: coming-soon.com
+      AccessControl: PublicRead
+      BucketName: warnerbell.com
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
+      LoggingConfiguration:
+        DestinationBucketName: !Ref LogsBucket
+        LogFilePrefix: AccessLogs
     #DeletionPolicy: Retain
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      PolicyDocument:
+        Id: MyPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join 
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3Bucket1
+                - /*
+      Bucket: !Ref S3Bucket1
 
   S3Bucket2:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: www.coming-soon.com
+      BucketName: www.warnerbell.com
     #DeletionPolicy: Retain
 
-  S3Bucket3:
+  LogsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: logs.coming-soon.com
+      BucketName: logs.warnerbell.com
     #DeletionPolicy: Retain
-    
+  S3BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref LogsBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+              - 's3:PutObject'
+            Effect: Allow
+            Principal:
+              Service: logging.s3.amazonaws.com
+            Resource: !Join 
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref LogsBucket
+                - /*
+            Condition:
+              ArnLike:
+                'aws:SourceArn': !GetAtt 
+                  - S3Bucket1
+                  - Arn
+              StringEquals:
+                'aws:SourceAccount': !Sub '${AWS::AccountId}'
+      
 Outputs:
   WebsiteURL:
     Value:
