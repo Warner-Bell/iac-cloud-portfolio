@@ -1,23 +1,31 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'My Cloud Resume Challenge CloudFront Distro.'
-
-Parameters:
-  DomainName:
-    Type: warnerbell.com
+Description: 'CRC ACM Cert. and CloudFront Distro.'
 
 Resources:
+  Certificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: warnerbell.com
+      DomainValidationOptions:
+        - DomainName: warnerbell.com
+          ValidationDomain: warnerbell.com
+        - DomainName: www.warnerbell.com
+          ValidationDomain: www.warnerbell.com
+      ValidationMethod: DNS
+
   CloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:
-        Comment: Origin Access Identity for Serverless Static with Basic Auth
+        Comment: Origin Access Identity for Static Site 
 
   Distribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
         Aliases:
-          - !Ref DomainName
+          - warnerbell.com
+          - www.warnerbell.com
         DefaultCacheBehavior:
           AllowedMethods:
             - GET
@@ -31,36 +39,47 @@ Resources:
         DefaultRootObject: index.html
         Enabled: true
         Origins:
-          - DomainName: !GetAtt Bucket.DomainName
+          - DomainName: warnerbell.com
             Id: s3Origin
             S3OriginConfig:
               OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}
         ViewerCertificate:
-          AcmCertificateArn: !Ref AcmCertificate
+          AcmCertificateArn: !Ref Certificate
           SslSupportMethod: sni-only
 
-  WwwDistribution:
-    Type: AWS::CloudFront::Distribution
+  Route53RecordSetGroup:
+    Type: AWS::Route53::RecordSetGroup
     Properties:
-      DistributionConfig:
-        Aliases:
-          - !Sub www.${DomainName}
-        DefaultCacheBehavior:
-          AllowedMethods:
-            - GET
-            - HEAD
-          ForwardedValues:
-            Cookies:
-              Forward: none
-            QueryString: false
-          TargetOriginId: s3Origin
-          ViewerProtocolPolicy: allow-all
-        Enabled: true
-        Origins:
-          - CustomOriginConfig:
-              OriginProtocolPolicy: http-only
-            DomainName: !Select [1, !Split ["//", !GetAtt WwwBucket.WebsiteURL]]
-            Id: s3Origin
-        ViewerCertificate:
-          AcmCertificateArn: !Ref AcmCertificate
-          SslSupportMethod: sni-only
+      HostedZoneName: warnerbell.com
+      RecordSets:
+      - Name: warnerbell.com
+        Type: A
+        AliasTarget:
+          DNSName:
+            Fn::GetAtt:
+            - Distribution
+            - DomainName
+          EvaluateTargetHealth: false
+          HostedZoneId: Z0507821205XVUTOQ9OO2
+      - Name: www.warnerbell.com
+        Type: A
+        AliasTarget:
+          DNSName:
+            Fn::GetAtt:
+            - Distribution
+            - DomainName
+          EvaluateTargetHealth: false
+          HostedZoneId: Z0507821205XVUTOQ9OO2
+  
+Outputs:
+  CertificateArn:
+    Description: Issued certificate
+    Value:
+      Ref: Certificate
+  CloudFrontDistribution:
+    Description: CloudFront distribution
+    Value:
+      Fn::GetAtt:
+      - Distribution
+      - DomainName
+  
