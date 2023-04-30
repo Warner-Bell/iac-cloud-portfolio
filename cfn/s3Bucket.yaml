@@ -5,8 +5,13 @@ Resources:
   S3Bucket1:
     Type: AWS::S3::Bucket
     Properties:
-      AccessControl: PublicRead
+      AccessControl: BucketOwnerFullControl
       BucketName: warnerbell.com
+      PublicAccessBlockConfiguration:
+                BlockPublicAcls: false
+                BlockPublicPolicy: false
+                IgnorePublicAcls: false
+                RestrictPublicBuckets: false
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
@@ -87,6 +92,6 @@ Outputs:
       - ''
       - - https://
         - Fn::GetAtt:
-          - S3Bucket
+          - S3Bucket1
           - DomainName
     Description: Name of S3 bucket to hold website content

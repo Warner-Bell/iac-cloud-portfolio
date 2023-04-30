@@ -7,7 +7,7 @@ echo $BKT_PATH
 cfn-lint validate $BKT_PATH
 
 aws cloudformation deploy \
-  --stack-name "CRC-s3bucket" \
+  --stack-name "CRC-s3buckets" \
   --s3-bucket cfmtn-stacks-2023 \
   --template-file "$BKT_PATH" \
   --no-execute-changeset \
