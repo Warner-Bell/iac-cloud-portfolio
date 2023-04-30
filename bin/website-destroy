@@ -3,3 +3,6 @@ set -e # stop the execution of the script if it fails
 
 aws cloudformation delete-stack \
  --stack-name "CRC-s3buckets"
+
+ aws cloudformation delete-stack \
+ --stack-name "Cldfrnt-Distro"
