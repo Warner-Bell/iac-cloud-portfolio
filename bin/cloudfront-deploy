@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 set -e # stop the execution of the script if it fails
 
-CF_PATH="/workspace/cloud-resume-challenge/cfn/s3-cloudfrnt.yaml"
+CF_PATH="/workspace/cloud-resume-challenge/cfn/cloudfrnt.yaml"
 echo $CF_PATH
 
 cfn-lint validate $CF_PATH

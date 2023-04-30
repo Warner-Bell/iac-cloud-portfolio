@@ -1,11 +1,13 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'CRC ACM Cert. and CloudFront Distro.'
+Description: 'CRC Website ACM Cert. and CloudFront Distro.'
 
 Resources:
   Certificate:
     Type: AWS::CertificateManager::Certificate
     Properties:
       DomainName: warnerbell.com
+      SubjectAlternativeNames: 
+        - www.warnerbell.com
       DomainValidationOptions:
         - DomainName: warnerbell.com
           ValidationDomain: warnerbell.com
@@ -50,9 +52,9 @@ Resources:
   Route53RecordSetGroup:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneName: warnerbell.com
+      HostedZoneName: "warnerbell.com"
       RecordSets:
-      - Name: warnerbell.com
+      - Name: "warnerbell.com"
         Type: A
         AliasTarget:
           DNSName:
@@ -61,7 +63,7 @@ Resources:
             - DomainName
           EvaluateTargetHealth: false
           HostedZoneId: Z0507821205XVUTOQ9OO2
-      - Name: www.warnerbell.com
+      - Name: "www.warnerbell.com"
         Type: A
         AliasTarget:
           DNSName:
