@@ -1,1 +1,33 @@
 
+Type: AWS::DynamoDB::Table
+Properties: 
+  AttributeDefinitions: 
+    - AttributeDefinition
+  BillingMode: String
+  ContributorInsightsSpecification: 
+    ContributorInsightsSpecification
+  DeletionProtectionEnabled: Boolean
+  GlobalSecondaryIndexes: 
+    - GlobalSecondaryIndex
+  ImportSourceSpecification: 
+    ImportSourceSpecification
+  KeySchema: 
+    - KeySchema
+  KinesisStreamSpecification: 
+    KinesisStreamSpecification
+  LocalSecondaryIndexes: 
+    - LocalSecondaryIndex
+  PointInTimeRecoverySpecification: 
+    PointInTimeRecoverySpecification
+  ProvisionedThroughput: 
+    ProvisionedThroughput
+  SSESpecification: 
+    SSESpecification
+  StreamSpecification: 
+    StreamSpecification
+  TableClass: String
+  TableName: String
+  Tags: 
+    - Tag
+  TimeToLiveSpecification: 
+    TimeToLiveSpecification
