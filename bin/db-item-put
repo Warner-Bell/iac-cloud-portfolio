@@ -8,4 +8,5 @@ aws dynamodb put-item \
     --table-name site-views \
     --item file: "$ITEM_PATH" \
     --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE
+    --return-item-collection-metrics SIZE \
+    --region us-east-1
