@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+set -e # stop the execution of the script if it fails
+
+ITEM_PATH="/workspace/cloud-resume-challenge/json/item.json"
+echo $ITEM_PATH
+
+aws dynamodb put-item \
+    --table-name site-views \
+    --item file: "$ITEM_PATH" \
+    --return-consumed-capacity TOTAL \
+    --return-item-collection-metrics SIZE
