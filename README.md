@@ -50,6 +50,7 @@ I'll use route53 hosted zones to create DNS records that alias to a cloudfront d
 ### 10. Python
 ### 11. Tests
 ### 12. Infrastructure as Code
+I'm building ClordFormation templates for key components of the site, and writing bash scripts to deploy them.
 ### 13. Source Control
 ### 14. CI/CD (Back end)
 ### 15. CI/CD (Front end)
