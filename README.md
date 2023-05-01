@@ -39,7 +39,11 @@ Same deal with the CSS, you'll see an example of a basic configuration resume wi
 This will be a fully responsive static portfolio website. The FQDN will be registered using AWS ACM and hosted on AWS S3, essentially re-creating [this](https://medium.com/@Warner_Bell/build-a-secure-static-website-using-s3-cloudfront-acm-and-route-53-ab1a0aee1ef9) project, but I will be using AWS CLI, CDK, and infrastructure as code for this one, following the structure layed out by the cloud resume challenge where possible.
 
 ### 5. HTTPS
+I'll be obtaining a SSL/TLS certificate from AWS Certificate Manager to authenticates the website's identity and enable an encrypted connections.
+
 ### 6. DNS
+I'll use route53 hosted zones to create DNS records that alias to a cloudfront distibution, and CNAMEs for the certificate.
+
 ### 7. Javascript
 ### 8. Database
 ### 9. API
