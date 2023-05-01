@@ -46,6 +46,7 @@ I'll use route53 hosted zones to create DNS records that alias to a cloudfront d
 
 ### 7. Javascript
 ### 8. Database
+I'll use AWS Dynamodb as the database for the sites visits counter.
 ### 9. API
 ### 10. Python
 ### 11. Tests
