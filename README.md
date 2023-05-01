@@ -50,7 +50,7 @@ I'll use route53 hosted zones to create DNS records that alias to a cloudfront d
 ### 10. Python
 ### 11. Tests
 ### 12. Infrastructure as Code
-I'm building ClordFormation templates for key components of the site, and writing bash scripts to deploy them.
+I'm building ClordFormation templates for key components of the site, and writing bash scripts to deploy them. I use AWS CDK and AWS SAM for small deoplyments and testing. 
 ### 13. Source Control
 ### 14. CI/CD (Back end)
 ### 15. CI/CD (Front end)
