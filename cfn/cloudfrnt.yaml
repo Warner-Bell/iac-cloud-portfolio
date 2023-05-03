@@ -34,15 +34,17 @@ Resources:
             Cookies:
               Forward: none
             QueryString: false
-          TargetOriginId: s3Origin
+          TargetOriginId: warnerbell.com.s3.us-east-1.amazonaws.com
           ViewerProtocolPolicy: redirect-to-https
         DefaultRootObject: index.html
         Enabled: true
         Origins:
           - DomainName: warnerbell.com
-            Id: s3Origin
-            S3OriginConfig:
-              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}
+            Id: warnerbell.com.s3.us-east-1.amazonaws.com
+            CustomOriginConfig:
+              HTTPPort: '80'
+              HTTPSPort: '443'
+              OriginProtocolPolicy: http-only
         ViewerCertificate:
           AcmCertificateArn: !Ref Certificate
           SslSupportMethod: sni-only
@@ -50,7 +52,7 @@ Resources:
   Route53RecordSetGroup:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneName: "warnerbell.com"
+      HostedZoneName: "warnerbell.com."
       RecordSets:
       - Name: "warnerbell.com"
         Type: A
@@ -70,6 +72,7 @@ Resources:
             - DomainName
           EvaluateTargetHealth: false
           HostedZoneId: Z0507821205XVUTOQ9OO2
+    DependsOn: Distribution
   
 Outputs:
   CertificateArn:
