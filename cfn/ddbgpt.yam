@@ -17,14 +17,6 @@ Resources:
         - Key: "CRC-Stuff"
           Value: "true"
 
-  DynamoDBItem:
-    Type: "AWS::DynamoDB::Table"
-    Properties:
-      TableName: views1
-      Item:
-        ID: { "S": "1" }
-        views: { "N": "1" }
-  
   LambdaFunction: 
     Type: AWS::Lambda::Function
     Properties:
@@ -57,21 +49,47 @@ Resources:
         - Key: "CRC-Stuff"
           Value: "true"
 
-  APIEndpoint:
-   Type: AWS::Lambda::Url
-   Properties: 
-     AuthType: NONE
-      #Cors: 
-        #AllowOrigins: 
-          #- (*)
-          #- https://warnerbell.com
-     TargetFunctionArn: !GetAtt LambdaFunction.Arn 
-      
+  APIGatewayRestApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: views-api
+      Description: REST API for views lambda function
+      Tags:
+        - Key: "CRC-Stuff"
+          Value: "true"
+
+  APIGatewayResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: !GetAtt [APIGatewayRestApi, RootResourceId]
+      PathPart: views
+      RestApiId: !Ref APIGatewayRestApi
+      Tags:
+        - Key: "CRC-Stuff"
+          Value: "true"
+
+  APIGatewayMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: POST
+      ResourceId: !Ref APIGatewayResource
+      RestApiId: !Ref APIGatewayRestApi
+      AuthorizationType: NONE
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFunction.Arn}/invocations"
+        PassthroughBehavior: WHEN_NO_TEMPLATES
+        RequestParameters:
+          integration.request.header.Content-Type: "'application/x-www-form-urlencoded'"
+      Tags:
+        - Key: "CRC-Stuff"
+          Value: "true"
 
 Outputs:
   LambdaFunctionURL:
     Value:
       Fn::GetAtt:
-      - LambdaFunction
-      - Arn
+        - APIGatewayRestApi
+        - 'RootResourceId'
     Description: The HTTP URL endpoint for your function. and The Amazon Resource Name (ARN) of the function.
