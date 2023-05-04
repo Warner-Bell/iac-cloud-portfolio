@@ -15,6 +15,14 @@ Resources:
       TableName: site-views
       Tags: 
         - CRC-Stuff
+  DynamoDBItem:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: !Ref DynamoDBTable
+      Item:
+        MyPrimaryKey: { "S": "my-key" }
+        MyAttribute1: { "S": "my-value-1" }
+        MyAttribute2: { "N": "123" }
   
   LambdaFunction: 
     Type: AWS::Lambda::Function

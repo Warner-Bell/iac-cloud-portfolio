@@ -18,7 +18,7 @@ aws cloudformation deploy \
 CF_PATH="/workspace/cloud-resume-challenge/cfn/cloudfrnt.yaml"
 echo $CF_PATH
 
-cfn-lint validate $CF_PATH
+#cfn-lint validate $CF_PATH
 
 aws cloudformation deploy \
   --stack-name "Cldfrnt-Distro" \

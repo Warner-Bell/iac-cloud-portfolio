@@ -62,7 +62,7 @@ Resources:
             - Distribution
             - DomainName
           EvaluateTargetHealth: false
-          HostedZoneId: Z0507821205XVUTOQ9OO2
+          HostedZoneId: Z2FDTNDATAQYW2
       - Name: "www.warnerbell.com"
         Type: A
         AliasTarget:
@@ -71,8 +71,9 @@ Resources:
             - Distribution
             - DomainName
           EvaluateTargetHealth: false
-          HostedZoneId: Z0507821205XVUTOQ9OO2
-    DependsOn: Distribution
+          HostedZoneId: Z2FDTNDATAQYW2
+    DependsOn: 
+      - Distribution
   
 Outputs:
   CertificateArn:
