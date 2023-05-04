@@ -11,5 +11,5 @@ aws cloudformation deploy \
   --s3-bucket cfmtn-stacks-2023 \
   --template-file "$CF_PATH" \
   --no-execute-changeset \
-  --tags group=crc-cloudfrnt \
+  --tags group=crc-stuff \
   --capabilities CAPABILITY_NAMED_IAM

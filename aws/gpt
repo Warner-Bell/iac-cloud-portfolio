@@ -1,0 +1,103 @@
+Resources:
+  DynamodbTable:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+        - AttributeName: "ID"
+          AttributeType: "S"
+      BillingMode: PAY_PER_REQUEST
+      KeySchema: 
+        - AttributeName: "ID"
+          KeyType: "HASH"
+      TableName: "site-views"
+      Tags: 
+        - Key: "CRC-Stuff"
+          Value: "true"
+
+  DynamoDBItem:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: !Ref DynamodbTable
+      Item:
+        ID: { "S": "1" }
+        views: { "N": "1" }
+
+  LambdaFunction: 
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: "views-lambda-api"
+      Runtime: "python3.8"
+      Role: "arn:aws:iam::123456789012:role/lambda-role"
+      Handler: "index.handler"
+      Code:
+        ZipFile: |
+          import json
+          import boto3
+          dynamodb = boto3.resource('dynamodb')
+          table = dynamodb.Table('site-views')
+          def lambda_handler(event, context):
+              response = table.get_item(Key={
+                  'ID': '1'
+              })
+              views = response['Item']['views']
+              views = views + 1
+              print(views)
+              response = table.put_item(Item={
+                      'ID': '1',
+                      'views': views
+              })
+              return views
+
+      Description: "Invoke a function during stack creation."
+      TracingConfig:
+        Mode: "Active"
+      Tags: 
+        - Key: "CRC-Stuff"
+          Value: "true"
+
+  LambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: "lambda:InvokeFunction"
+      FunctionName: !GetAtt LambdaFunction.Arn
+      Principal: "apigateway.amazonaws.com"
+      SourceArn: !Sub "arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${ApiGatewayRestApi}/*/*/*"
+  
+  ApiGatewayRestApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: "site-views-api"
+      Tags:
+        - Key: "CRC-Stuff"
+          Value: "true"
+
+  ApiGatewayResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: !GetAtt ApiGatewayRestApi.RootResourceId
+      PathPart: "views"
+      RestApiId: !Ref ApiGatewayRestApi
+      Tags:
+        - Key: "CRC-Stuff"
+          Value: "true"
+
+  ApiGatewayMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: "GET"
+      ResourceId: !Ref ApiGatewayResource
+      RestApiId: !Ref ApiGatewayRestApi
+      AuthorizationType: "NONE"
+      Integration:
+        IntegrationHttpMethod: "POST"
+        Type: "AWS_PROXY"
+        Uri: !Sub "arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFunction.Arn}/invocations"
+      Tags:
+        - Key: "CRC-Stuff"
+          Value: "true"
+
+Outputs:
+  FunctionURL:
+    Value:
+      Fn::Sub: "https://${ApiGatewayRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/views"
+    Description: "The HTTP URL endpoint for your function."

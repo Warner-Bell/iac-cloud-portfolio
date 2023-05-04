@@ -2,34 +2,35 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: 'CRC Website Database, API and Lambda Function.'
 
 Resources:
-  DynamodbTable:
+  DynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties: 
       AttributeDefinitions: 
         - AttributeName: "ID"
-        - AttributeType: "S"
+          AttributeType: "S"
       BillingMode: PAY_PER_REQUEST
       KeySchema: 
         - AttributeName: "ID"
-        - KEYTYPE: "HASH"
-      TableName: site-views
+          KeyType: "HASH"
+      TableName: "site-views"
       Tags: 
-        - CRC-Stuff
+        - Key: "CRC-Stuff"
+          Value: "true"
+
   DynamoDBItem:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: !Ref DynamoDBTable
+      TableName: !Ref "DynamoDBTable"
       Item:
-        MyPrimaryKey: { "S": "my-key" }
-        MyAttribute1: { "S": "my-value-1" }
-        MyAttribute2: { "N": "123" }
+        ID: { "S": "1" }
+        views: { "N": "1" }
   
   LambdaFunction: 
     Type: AWS::Lambda::Function
     Properties:
       FunctionName: views-lambda-api
       Runtime: python3.8
-      Role: arn:aws:iam::123456789012:role/lambda-role
+      Role: arn:aws:iam::198101904822:role/BroadLambda
       Handler: index.handler
       Code:
         ZipFile: |
@@ -39,38 +40,38 @@ Resources:
           table = dynamodb.Table('site-views')
           def lambda_handler(event, context):
               response = table.get_item(Key={
-                  'id':'0'
+                  'ID':'0'
               })
               views = response['Item']['views']
               views = views + 1
               print(views)
               response = table.put_item(Item={
-                      'id':'0',
+                      'ID':'0',
                       'views': views
               })
               return views
-
       Description: Invoke a function during stack creation.
       TracingConfig:
         Mode: Active
       Tags: 
-        - CRC-Stuff
+        - Key: "CRC-Stuff"
+          Value: "true"
 
-    Type: AWS::Lambda::Url
-    Properties: 
-      AuthType: NONE
+  APIEndpoint:
+   Type: AWS::Lambda::Url
+   Properties: 
+     AuthType: NONE
       #Cors: 
         #AllowOrigins: 
           #- (*)
           #- https://warnerbell.com
-      TargetFunctionArn: views-lambda
-      Tags: 
-        - CRC-Stuff
+     TargetFunctionArn: !GetAtt LambdaFunction.Arn 
+      
 
 Outputs:
-  FunctionURL:
+  LambdaFunctionURL:
     Value:
       Fn::GetAtt:
-      - FunctionUrl
-      - FunctionArn
+      - LambdaFunction
+      - Arn
     Description: The HTTP URL endpoint for your function. and The Amazon Resource Name (ARN) of the function.
