@@ -35,7 +35,7 @@ Resources:
               - - 'arn:aws:s3:::'
                 - !Ref S3Bucket1
                 - /*
-      Bucket: !Ref S3Bucket1
+      Bucket: !Ref SiteBucket
 
   WWWBucket:
     Type: AWS::S3::Bucket
@@ -73,7 +73,7 @@ Resources:
                 - /*
             Condition:
               ArnLike:
-                'aws:SourceArn': !GetAtt 
+                'aws:SourceArn': !GetAtt
                   - SiteBucket
                   - Arn
               StringEquals:
