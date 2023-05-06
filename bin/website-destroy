@@ -1,6 +1,8 @@
 #! /usr/bin/env bash
 set -e # stop the execution of the script if it fails
 
+aws s3 rm s3://warnerbell.com --recursive
+
 aws s3 rm s3://logs.warnerbell.com --recursive
 
 aws cloudformation delete-stack \

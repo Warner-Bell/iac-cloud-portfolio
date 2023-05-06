@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: 'CRC Website S3 Buckets.'
 Resources:
 
-  S3Bucket1:
+  SiteBucket:
     Type: AWS::S3::Bucket
     Properties:
       AccessControl: BucketOwnerFullControl
@@ -74,7 +74,7 @@ Resources:
             Condition:
               ArnLike:
                 'aws:SourceArn': !GetAtt 
-                  - S3Bucket1
+                  - SiteBucket
                   - Arn
               StringEquals:
                 'aws:SourceAccount': !Sub '${AWS::AccountId}'
@@ -83,7 +83,7 @@ Outputs:
   WebsiteURL:
     Value:
       Fn::GetAtt:
-      - S3Bucket1
+      - SiteBucket
       - WebsiteURL
     Description: URL for website hosted on S3
   S3BucketSecureURL:
@@ -92,6 +92,6 @@ Outputs:
       - ''
       - - https://
         - Fn::GetAtt:
-          - S3Bucket1
+          - SiteBucket
           - DomainName
     Description: Name of S3 bucket to hold website content
