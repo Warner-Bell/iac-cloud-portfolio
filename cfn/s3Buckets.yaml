@@ -17,7 +17,7 @@ Resources:
         ErrorDocument: error.html
       LoggingConfiguration:
         DestinationBucketName: !Ref LogsBucket
-        LogFilePrefix: AccessLogs
+        LogFilePrefix: AccessLogs/
     #DeletionPolicy: Retain
   BucketPolicy:
     Type: 'AWS::S3::BucketPolicy'
