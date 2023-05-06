@@ -33,7 +33,7 @@ Resources:
             Resource: !Join 
               - ''
               - - 'arn:aws:s3:::'
-                - !Ref S3Bucket1
+                - !Ref SiteBucket
                 - /*
       Bucket: !Ref SiteBucket
 
