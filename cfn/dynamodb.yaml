@@ -21,7 +21,7 @@ Resources:
     Type: "AWS::DynamoDB::Table"
     Properties:
       TableName: "views1"
-      Item:
+      KeySchema:
         ID: { "S": "1" }
         views: { "N": "1" }
   
