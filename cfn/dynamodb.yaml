@@ -20,7 +20,7 @@ Resources:
   DynamoDBItem:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: views1
+      TableName: "views1"
       Item:
         ID: { "S": "1" }
         views: { "N": "1" }
@@ -57,21 +57,46 @@ Resources:
         - Key: "CRC-Stuff"
           Value: "true"
 
+  APIGatewayRestApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: Views API
+
   APIEndpoint:
-   Type: AWS::Lambda::Url
-   Properties: 
-     AuthType: NONE
-      #Cors: 
-        #AllowOrigins: 
-          #- (*)
-          #- https://warnerbell.com
-     TargetFunctionArn: !GetAtt LambdaFunction.Arn 
-      
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: !GetAtt APIGatewayRestApi.RootResourceId
+      PathPart: views
+      RestApiId: !Ref APIGatewayRestApi
+
+  APIMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: GET
+      Integration:
+        Type: AWS_PROXY
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFunction.Arn}/invocations
+      ResourceId: !Ref APIEndpoint
+      RestApiId: !Ref APIGatewayRestApi
+      MethodResponses:
+        - StatusCode: '200'
+  LambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:invokeFunction
+      FunctionName: !Ref LambdaFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${APIGatewayRestApi}/*/GET/views
 
 Outputs:
-  LambdaFunctionURL:
+  APIEndpointURL:
     Value:
-      Fn::GetAtt:
-      - LambdaFunction
-      - Arn
-    Description: The HTTP URL endpoint for your function. and The Amazon Resource Name (ARN) of the function.
+      Fn::Join:
+        - ""
+        - - "https://"
+          - !Ref APIGatewayRestApi
+          - ".execute-api."
+          - !Ref AWS::Region
+         
+
