@@ -8,3 +8,6 @@ aws cloudformation delete-stack \
 
  aws cloudformation delete-stack \
  --stack-name "Cldfrnt-Distro"
+
+ aws cloudformation delete-stack \
+ --stack-name "CRC-ddbLambdaApi"
