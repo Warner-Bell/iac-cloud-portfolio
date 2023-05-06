@@ -16,14 +16,6 @@ Resources:
       Tags: 
         - Key: "CRC-Stuff"
           Value: "true"
-
-  DynamoDBItem:
-    Type: "AWS::DynamoDB::Table"
-    Properties:
-      TableName: "views1"
-      KeySchema:
-        ID: { "S": "1" }
-        views: { "N": "1" }
   
   LambdaFunction: 
     Type: AWS::Lambda::Function
@@ -76,11 +68,14 @@ Resources:
       HttpMethod: GET
       Integration:
         Type: AWS_PROXY
+        IntegrationHttpMethod: POST
         Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFunction.Arn}/invocations
       ResourceId: !Ref APIEndpoint
       RestApiId: !Ref APIGatewayRestApi
       MethodResponses:
         - StatusCode: '200'
+
+
   LambdaPermission:
     Type: AWS::Lambda::Permission
     Properties:
@@ -98,5 +93,7 @@ Outputs:
           - !Ref APIGatewayRestApi
           - ".execute-api."
           - !Ref AWS::Region
-         
-
+  DynamoDBTableName:
+    Value: !Ref DynamoDBTable
+  LambdaFunctionARN:
+    Value: !GetAtt LambdaFunction.Arn
