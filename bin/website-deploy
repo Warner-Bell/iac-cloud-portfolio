@@ -10,10 +10,13 @@ aws cloudformation deploy \
   --stack-name "CRC-s3buckets" \
   --s3-bucket cfmtn-stacks-2023 \
   --template-file "$BKT_PATH" \
-  --no-execute-changeset \
+  #--no-execute-changeset \
   --tags group=crc-buckets \
   --capabilities CAPABILITY_NAMED_IAM
 
+sleep 300
+
+./bin/sync-files
 
 CF_PATH="/workspace/cloud-resume-challenge/cfn/cloudfrnt.yaml"
 echo $CF_PATH
@@ -24,7 +27,7 @@ aws cloudformation deploy \
   --stack-name "Cldfrnt-Distro" \
   --s3-bucket cfmtn-stacks-2023 \
   --template-file "$CF_PATH" \
-  --no-execute-changeset \
+  #--no-execute-changeset \
   --tags group=crc-cloudfrnt \
   --capabilities CAPABILITY_NAMED_IAM
 
@@ -44,3 +47,8 @@ aws cloudformation deploy \
 #   --no-execute-changeset \
 #   --tags group=crc-stuff \
 #   --capabilities CAPABILITY_NAMED_IAM
+
+
+sleep 600
+
+./bin/bucketPolicy-put
