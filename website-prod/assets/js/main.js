@@ -84,7 +84,7 @@ for(let i=0; i<marqueeElementsDisplayed; i++) {
 const counter = document.querySelector(".counter-number");
 async function updateCounter() {
     let response = await fetch(
-        "Lambda URL"
+        "https://g6zy4nmfzwaejxeccyrxugfmfa0zscjd.lambda-url.us-east-1.on.aws/"
     );
     let data = await response.json();
     counter.innerHTML = `👀 Views: ${data}`;
