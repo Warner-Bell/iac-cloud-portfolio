@@ -35,22 +35,24 @@ aws cloudformation deploy \
 
   sleep 30
 
-# #! /usr/bin/env bash
-# set -e # stop the execution of the script if it fails
+#! /usr/bin/env bash
+set -e # stop the execution of the script if it fails
 
-# DDB_PATH="/workspace/cloud-resume-challenge/cfn/dynamodb.yaml"
-# echo $DDB_PATH
+DDB_PATH="/workspace/cloud-resume-challenge/cfn/dynamodb.yaml"
+echo $DDB_PATH
 
-# cfn-lint validate $DDB_PATH
+cfn-lint validate $DDB_PATH
 
-# aws cloudformation deploy \
-#   --stack-name "CRC-ddbLambdaApi" \
-#   --s3-bucket cfmtn-stacks-2023 \
-#   --template-file "$DDB_PATH" \
-#   --tags group=crc-stuff \
-#   --capabilities CAPABILITY_NAMED_IAM \
-#--no-execute-changeset \
+aws cloudformation deploy \
+  --stack-name "CRC-ddbLambdaApi" \
+  --s3-bucket cfmtn-stacks-2023 \
+  --template-file "$DDB_PATH" \
+  --tags group=crc-stuff \
+  --capabilities CAPABILITY_NAMED_IAM \
+--no-execute-changeset \
 
-sleep 300
+sleep 30
 
-#./bin/bucketPolicy-put.sh
+./bin/bucketPolicy-put.sh
+
+./bin/ddbItem-put.sh

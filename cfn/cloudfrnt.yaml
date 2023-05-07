@@ -16,21 +16,21 @@ Resources:
           HostedZoneId: Z0507821205XVUTOQ9OO2
       ValidationMethod: DNS
 
-  # CloudFrontOriginAccessIdentity:
-  #   Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
-  #   Properties:
-  #     CloudFrontOriginAccessIdentityConfig:
-  #       Comment: Origin Access Identity for Static Site 
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: Origin Access Identity for Static Site 
 
   Distribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
         PriceClass: PriceClass_100
-        Logging:
-           Bucket: logs.warnerbell.com
-           IncludeCookies: False
-           Prefix: AccessLogs/
+        # Logging:
+        #    Bucket: logs.warnerbell.com
+        #    IncludeCookies: false
+        #    Prefix: AccessLogs/
         Aliases:
           - warnerbell.com
           - www.warnerbell.com
@@ -56,7 +56,6 @@ Resources:
                 - TLSv1.2
         ViewerCertificate:
           AcmCertificateArn: !Ref Certificate
-          CloudFrontDefaultCertificate: false
           MinimumProtocolVersion: TLSv1.2_2021
           SslSupportMethod: sni-only
 
@@ -97,8 +96,8 @@ Outputs:
       Fn::GetAtt:
       - Distribution
       - DomainName
-  # CloudFrontOriginAccessIdentity:
-  #   Description: CloudFront origin access identity ID
-  #   Value:
-  #     !Ref CloudFrontOriginAccessIdentity
+  CloudFrontOriginAccessIdentity:
+    Description: CloudFront origin access identity ID
+    Value:
+      !Ref CloudFrontOriginAccessIdentity
   
