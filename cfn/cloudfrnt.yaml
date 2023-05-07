@@ -43,8 +43,8 @@ Resources:
           - DomainName: warnerbell.com
             Id: warnerbell.com.s3.us-east-1.amazonaws.com
             CustomOriginConfig:
-              HTTPPort: '80'
-              HTTPSPort: '443'
+              HTTPPort: "80"
+              HTTPSPort: "443"
               OriginProtocolPolicy: http-only
         ViewerCertificate:
           AcmCertificateArn: !Ref Certificate

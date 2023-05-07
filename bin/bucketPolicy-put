@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+set -e # stop the execution of the script if it fails
+
+# Get the latest OAI ID
+oai_id=$(aws cloudfront list-cloud-front-origin-access-identities --query "CloudFrontOriginAccessIdentityList.Items[].Id" --output text | sort -r | head -n 1)
+
+# Create the bucket policy with the OAI ID
+aws s3api put-bucket-policy --bucket warnerbell.com --policy "{\"Version\":\"2012-10-17\",\"Id\":\"CloudFrontBucketPolicy\",\"Statement\":[{\"Sid\":\"GrantBucketAccessToOAI\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity $oai_id\"},\"Action\":[\"s3:GetObject\",\"s3:PutObject\"],\"Resource\":\"arn:aws:s3:::warnerbell.com/*\"}]}"
+
+echo "Bucket policy created successfully with OAI ID: $oai_id"
+

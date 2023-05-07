@@ -5,7 +5,7 @@ Resources:
   SiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      AccessControl: BucketOwnerFullControl
+      AccessControl: Private
       BucketName: warnerbell.com
       PublicAccessBlockConfiguration:
                 BlockPublicAcls: false
@@ -41,7 +41,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: www.warnerbell.com
-      AccessControl: BucketOwnerFullControl
+      AccessControl: Private
       WebsiteConfiguration:
         RedirectAllRequestsTo:
           HostName: warnerbell.com
@@ -52,7 +52,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: logs.warnerbell.com
-      AccessControl: BucketOwnerFullControl
+      AccessControl: Private
     #DeletionPolicy: Retain
   S3BucketPolicy:
     Type: 'AWS::S3::BucketPolicy'
