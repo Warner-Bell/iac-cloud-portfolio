@@ -14,11 +14,7 @@ aws cloudformation deploy \
   --capabilities CAPABILITY_NAMED_IAM \
   #--no-execute-changeset \
 
-  sleep 30
-
-./bin/s3sync-files.sh
-
-sleep 30
+sleep 15
 
 CF_PATH="/workspace/cloud-resume-challenge/cfn/cloudfrnt.yaml"
 echo $CF_PATH
@@ -33,7 +29,7 @@ aws cloudformation deploy \
   --capabilities CAPABILITY_NAMED_IAM \
   #--no-execute-changeset \
 
-  sleep 30
+sleep 15
 
 #! /usr/bin/env bash
 set -e # stop the execution of the script if it fails
@@ -49,12 +45,14 @@ aws cloudformation deploy \
   --template-file "$DDB_PATH" \
   --tags group=crc-stuff \
   --capabilities CAPABILITY_NAMED_IAM \
-#--no-execute-changeset \
-
-sleep 30
-
-./bin/bucketPolicy-put.sh
+  #--no-execute-changeset \
 
 sleep 15
 
+#./bin/bucketPolicy-put.sh
+
+#sleep 15
+
 ./bin/ddbItem-put.sh
+
+./bin/s3sync-files.sh
