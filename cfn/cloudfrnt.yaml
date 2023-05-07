@@ -26,6 +26,11 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
+        PriceClass: PriceClass_100
+        Logging:
+           Bucket: logs.warnerbell.com
+           IncludeCookies: False
+           Prefix: AccessLogs/
         Aliases:
           - warnerbell.com
           - www.warnerbell.com
@@ -33,14 +38,13 @@ Resources:
           AllowedMethods:
             - GET
             - HEAD
-          ForwardedValues:
-            Cookies:
-              Forward: none
-            QueryString: false
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          Compress: True
           TargetOriginId: warnerbell.com.s3-website-us-east-1.amazonaws.com
           ViewerProtocolPolicy: redirect-to-https
         DefaultRootObject: index.html
         Enabled: true
+        IPV6Enabled: true
         Origins:
           - DomainName: warnerbell.com.s3-website-us-east-1.amazonaws.com
             Id: warnerbell.com.s3-website-us-east-1.amazonaws.com
@@ -48,8 +52,12 @@ Resources:
               HTTPPort: "80"
               HTTPSPort: "443"
               OriginProtocolPolicy: http-only
+              OriginSSLProtocols: 
+                - TLSv1.2
         ViewerCertificate:
           AcmCertificateArn: !Ref Certificate
+          CloudFrontDefaultCertificate: false
+          MinimumProtocolVersion: TLSv1.2_2021
           SslSupportMethod: sni-only
 
   Route53RecordSetGroup:
