@@ -83,12 +83,12 @@ Outputs:
     Description: Issued certificate
     Value:
       Ref: Certificate
-  CloudFrontDistribution:
-    Description: CloudFront distribution
-    Value:
-      Fn::GetAtt:
-      - Distribution
-      - DomainName
+  # CloudFrontDistribution:
+  #   Description: CloudFront distribution
+  #   Value:
+  #     Fn::GetAtt:
+  #     - Distribution
+  #     - DomainName
   CloudFrontOriginAccessIdentity:
     Description: CloudFront origin access identity ID
     Value:

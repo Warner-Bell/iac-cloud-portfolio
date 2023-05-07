@@ -16,7 +16,7 @@ aws cloudformation deploy \
 
   sleep 30
 
-./bin/sync-files
+./bin/sync-files.sh
 
 sleep 30
 
@@ -53,4 +53,4 @@ aws cloudformation deploy \
 
 sleep 300
 
-./bin/bucketPolicy-put
+#./bin/bucketPolicy-put.sh
