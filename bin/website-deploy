@@ -55,4 +55,6 @@ sleep 30
 
 ./bin/bucketPolicy-put.sh
 
+sleep 15
+
 ./bin/ddbItem-put.sh
