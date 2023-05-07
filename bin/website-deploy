@@ -16,7 +16,7 @@ aws cloudformation deploy \
 
   sleep 30
 
-./bin/sync-files.sh
+./bin/s3sync-files.sh
 
 sleep 30
 
