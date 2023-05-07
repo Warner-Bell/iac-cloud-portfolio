@@ -31,7 +31,7 @@ aws s3api put-bucket-policy \
         ]
     }'
     
-sleep 30
+sleep 10
 
 latest_oai=$(aws cloudfront list-cloud-front-origin-access-identities \
     --query "CloudFrontOriginAccessIdentityList.Items[-1].Id" \
@@ -58,7 +58,7 @@ aws s3api put-bucket-policy \
         ]
     }'
 
-sleep 30
+sleep 10
 
 latest_oai=$(aws cloudfront list-cloud-front-origin-access-identities \
     --query "CloudFrontOriginAccessIdentityList.Items[-1].Id" \
