@@ -42,7 +42,7 @@ Resources:
         DefaultRootObject: index.html
         Enabled: true
         Origins:
-          - DomainName: warnerbell.com
+          - DomainName: warnerbell.com.s3-website-us-east-1.amazonaws.com
             Id: warnerbell.com.s3-website-us-east-1.amazonaws.com
             CustomOriginConfig:
               HTTPPort: "80"
@@ -83,14 +83,14 @@ Outputs:
     Description: Issued certificate
     Value:
       Ref: Certificate
-  # CloudFrontDistribution:
-  #   Description: CloudFront distribution
-  #   Value:
-  #     Fn::GetAtt:
-  #     - Distribution
-  #     - DomainName
-  CloudFrontOriginAccessIdentity:
-    Description: CloudFront origin access identity ID
+  CloudFrontDistribution:
+    Description: CloudFront distribution
     Value:
-      !Ref CloudFrontOriginAccessIdentity
+      Fn::GetAtt:
+      - Distribution
+      - DomainName
+  # CloudFrontOriginAccessIdentity:
+  #   Description: CloudFront origin access identity ID
+  #   Value:
+  #     !Ref CloudFrontOriginAccessIdentity
   
