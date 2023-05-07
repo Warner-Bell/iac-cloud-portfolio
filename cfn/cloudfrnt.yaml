@@ -52,31 +52,31 @@ Resources:
           AcmCertificateArn: !Ref Certificate
           SslSupportMethod: sni-only
 
-  # Route53RecordSetGroup:
-  #   Type: AWS::Route53::RecordSetGroup
-  #   Properties:
-  #     HostedZoneName: "warnerbell.com."
-  #     RecordSets:
-  #     - Name: "warnerbell.com"
-  #       Type: A
-  #       AliasTarget:
-  #         DNSName:
-  #           Fn::GetAtt:
-  #           - Distribution
-  #           - DomainName
-  #         EvaluateTargetHealth: false
-  #         HostedZoneId: Z2FDTNDATAQYW2
-  #     - Name: "www.warnerbell.com"
-  #       Type: A
-  #       AliasTarget:
-  #         DNSName:
-  #           Fn::GetAtt:
-  #           - Distribution
-  #           - DomainName
-  #         EvaluateTargetHealth: false
-  #         HostedZoneId: Z2FDTNDATAQYW2
-  #   DependsOn: 
-  #     - Distribution
+  Route53RecordSetGroup:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneName: "warnerbell.com."
+      RecordSets:
+      - Name: "warnerbell.com"
+        Type: A
+        AliasTarget:
+          DNSName:
+            Fn::GetAtt:
+            - Distribution
+            - DomainName
+          EvaluateTargetHealth: false
+          HostedZoneId: Z2FDTNDATAQYW2
+      - Name: "www.warnerbell.com"
+        Type: A
+        AliasTarget:
+          DNSName:
+            Fn::GetAtt:
+            - Distribution
+            - DomainName
+          EvaluateTargetHealth: false
+          HostedZoneId: Z2FDTNDATAQYW2
+    DependsOn: 
+      - Distribution
   
 Outputs:
   CertificateArn:
