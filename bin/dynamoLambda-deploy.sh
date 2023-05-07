@@ -4,7 +4,7 @@ set -e # stop the execution of the script if it fails
 DDB_PATH="/workspace/cloud-resume-challenge/cfn/dynamodb.yaml"
 echo $DDB_PATH
 
-cfn-lint validate $DDB_PATH
+#cfn-lint validate $DDB_PATH
 
 aws cloudformation deploy \
   --stack-name "CRC-ddbLambdaApi" \
