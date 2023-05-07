@@ -11,7 +11,7 @@ echo "Latest OAI ID: $latest_oai"
 
 # Create a bucket policy that allows read and write access to the specified S3 bucket for the latest OAI
 aws s3api put-bucket-policy \
-    --bucket logs.warnerbell.com \
+    --bucket warnerbell.com \
     --policy '{
         "Version": "2012-10-17",
         "Id": "CloudFrontBucketPolicy",
@@ -26,7 +26,7 @@ aws s3api put-bucket-policy \
                     "s3:GetObject",
                     "s3:PutObject"
                 ],
-                "Resource": "arn:aws:s3:::logs.warnerbell.com/*"
+                "Resource": "arn:aws:s3:::warnerbell.com/*"
             }
         ]
     }'

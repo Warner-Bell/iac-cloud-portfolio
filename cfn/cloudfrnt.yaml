@@ -37,13 +37,13 @@ Resources:
             Cookies:
               Forward: none
             QueryString: false
-          TargetOriginId: warnerbell.com.s3.us-east-1.amazonaws.com
+          TargetOriginId: warnerbell.com.s3-website-us-east-1.amazonaws.com
           ViewerProtocolPolicy: redirect-to-https
         DefaultRootObject: index.html
         Enabled: true
         Origins:
           - DomainName: warnerbell.com
-            Id: warnerbell.com.s3.us-east-1.amazonaws.com
+            Id: warnerbell.com.s3-website-us-east-1.amazonaws.com
             CustomOriginConfig:
               HTTPPort: "80"
               HTTPSPort: "443"

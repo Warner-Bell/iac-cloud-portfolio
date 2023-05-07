@@ -7,8 +7,11 @@ aws s3 rm s3://warnerbell.com --recursive
 
 aws s3 rm s3://logs.warnerbell.com --recursive
 
-aws route53 list-hosted-zones-by-name --dns-name warnerbell.com --query 'HostedZones[0].Id' --output text | awk -F "/" '{print $3}' | xargs -I {} aws route53 list-resource-record-sets --hosted-zone-id {} --query "ResourceRecordSets[?Type == 'CNAME'].Name" --output text | awk '{print "{\"Name\":\""$1"\", \"Type\":\"CNAME\"},"}' | xargs -I {} aws route53 change-resource-record-sets --hosted-zone-id hosted-zone-id --change-batch '{"Changes": [{"Action": "DELETE", "ResourceRecordSet": '"{}"'}]}'
-
+aws route53 list-resource-record-sets --hosted-zone-id Z0507821205XVUTOQ9OO2 --query "ResourceRecordSets[?Type == 'CNAME' || Type == 'A']" | \
+jq '{Changes: [.[] | {Action: "DELETE", ResourceRecordSet: .}]}' | \
+aws route53 change-resource-record-sets --hosted-zone-id Z0507821205XVUTOQ9OO2 --change-batch file:///dev/stdin \
+&& echo "Resource Record Sets deleted successfully." \
+|| echo "Failed to delete Resource Record Sets."
 
 aws cloudformation delete-stack \
  --stack-name "CRC-s3buckets"
@@ -18,3 +21,5 @@ aws cloudformation delete-stack \
 
  aws cloudformation delete-stack \
  --stack-name "CRC-ddbLambdaApi"
+
+ aws s3 rm s3://logs.warnerbell.com --recursive
