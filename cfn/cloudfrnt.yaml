@@ -7,7 +7,8 @@ Resources:
     Properties:
       DomainName: warnerbell.com
       SubjectAlternativeNames: 
-        - "*.warnerbell.com"
+        - "warnerbell.com"
+        - "www.warnerbell.com"
       DomainValidationOptions:
         - DomainName: warnerbell.com
           HostedZoneId: Z0507821205XVUTOQ9OO2
