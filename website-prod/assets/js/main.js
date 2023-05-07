@@ -79,3 +79,14 @@ root.style.setProperty("--marquee-elements", marqueeContent.children.length);
 for(let i=0; i<marqueeElementsDisplayed; i++) {
   marqueeContent.appendChild(marqueeContent.children[i].cloneNode(true));
 }
+
+// site-views Code
+const counter = document.querySelector(".counter-number");
+async function updateCounter() {
+    let response = await fetch(
+        "Lambda URL"
+    );
+    let data = await response.json();
+    counter.innerHTML = `👀 Views: ${data}`;
+}
+updateCounter();
