@@ -12,6 +12,8 @@ Resources:
       DomainValidationOptions:
         - DomainName: warnerbell.com
           HostedZoneId: Z0507821205XVUTOQ9OO2
+        - DomainName: www.warnerbell.com
+          HostedZoneId: Z0507821205XVUTOQ9OO2
       ValidationMethod: DNS
 
   CloudFrontOriginAccessIdentity:
