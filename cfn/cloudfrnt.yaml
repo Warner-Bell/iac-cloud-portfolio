@@ -16,11 +16,11 @@ Resources:
           HostedZoneId: Z0507821205XVUTOQ9OO2
       ValidationMethod: DNS
 
-  CloudFrontOriginAccessIdentity:
-    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
-    Properties:
-      CloudFrontOriginAccessIdentityConfig:
-        Comment: Origin Access Identity for Static Site 
+  # CloudFrontOriginAccessIdentity:
+  #   Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+  #   Properties:
+  #     CloudFrontOriginAccessIdentityConfig:
+  #       Comment: Origin Access Identity for Static Site 
 
   Distribution:
     Type: AWS::CloudFront::Distribution
