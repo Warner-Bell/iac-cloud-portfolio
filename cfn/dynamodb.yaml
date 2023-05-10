@@ -17,13 +17,13 @@ Resources:
         - Key: "CRC-Stuff"
           Value: "true"
   
-  LambdaFunction: 
+  lambdaFunction: 
     Type: AWS::Lambda::Function
     Properties:
       FunctionName: views-lambda-api
       Runtime: python3.8
       Role: arn:aws:iam::198101904822:role/BroadLambda
-      Handler: index.handler
+      Handler: lambda_function.lambda_handler
       Code:
         ZipFile: |
           import json
@@ -42,7 +42,7 @@ Resources:
                       'views': views
               })
               return views
-      Description: Invoke a function during stack creation.
+      Description: views-lambda.
       TracingConfig:
         Mode: Active
       Tags: 
@@ -53,22 +53,33 @@ Resources:
     Type: AWS::Lambda::Url
     Properties: 
       AuthType: NONE
-      Cors: 
+      Cors:
+        AllowMethods: 
+          - "*"
         AllowOrigins:
           - "*"
           #- https://warnerbell.com
           #- https://www.warnerbell.com
           #- https://d2xryw30naotei.cloudfront.net
       InvokeMode: BUFFERED
-      TargetFunctionArn: !GetAtt LambdaFunction.Arn
+      TargetFunctionArn: !GetAtt lambdaFunction.Arn
+
+  permissionForURLInvoke:
+     Type: AWS::Lambda::Permission
+     Properties:
+       FunctionName: !Ref lambdaFunction
+       FunctionUrlAuthType: 'NONE'
+       Action: lambda:InvokeFunctionUrl
+       Principal: '*'
+
 
 Outputs:
   
   DynamoDBTableName:
     Value: !Ref DynamoDBTable
-  LambdaFunctionARN:
-    Value: !GetAtt LambdaFunction.Arn
-  # LambdaFunctionUrl:
+  lambdaFunctionARN:
+    Value: !GetAtt lambdaFunction.Arn
+  # lambdaFunctionUrl:
   #   Value: 
-  #     Fn::GetAtt: LambdaFunction.FunctionUrl
+  #     Fn::GetAtt: lambdaFunction.FunctionUrl
   #   Description: "The HTTP URL endpoint for your function."
