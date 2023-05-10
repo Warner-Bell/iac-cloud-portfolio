@@ -57,9 +57,9 @@ Resources:
           - "*"
         AllowOrigins:
           - "*"
-          #- https://warnerbell.com
-          #- https://www.warnerbell.com
-          #- https://d2xryw30naotei.cloudfront.net
+          # - https://warnerbell.com
+          # - https://www.warnerbell.com
+          # - https://d2xryw30naotei.cloudfront.net
       InvokeMode: BUFFERED
       TargetFunctionArn: !GetAtt lambdaFunction.Arn
 
@@ -70,7 +70,6 @@ Resources:
        FunctionUrlAuthType: 'NONE'
        Action: lambda:InvokeFunctionUrl
        Principal: '*'
-
 
 Outputs:
   
