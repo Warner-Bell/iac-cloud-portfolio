@@ -23,7 +23,8 @@ Resources:
       FunctionName: views-lambda-api
       Runtime: python3.8
       Role: arn:aws:iam::198101904822:role/BroadLambda
-      Handler: lambda_function.lambda_handler
+      Handler: index.lambda_handler
+      MemorySize: 256
       Code:
         ZipFile: |
           import json
@@ -43,8 +44,6 @@ Resources:
               })
               return views
       Description: views-lambda.
-      TracingConfig:
-        Mode: Active
       Tags: 
         - Key: "CRC-Stuff"
           Value: "true"
