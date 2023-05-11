@@ -10,11 +10,12 @@ tasks:
       cd $THEIA_WORKSPACE_ROOT
   - name: cfn lint
     command:
-      npm install -g cfn-lint
+      - npm install -g cfn-lint
   - name: cdk
     command: |
-      npm install aws-cdk -g
+      npm install -g aws-cdk
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
     - cweijan.vscode-postgresql-client2
+
