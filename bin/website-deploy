@@ -56,3 +56,4 @@ sleep 15
 ./bin/ddbItem-put.sh
 
 ./bin/s3sync-files.sh
+
