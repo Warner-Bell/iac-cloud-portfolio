@@ -26,5 +26,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Invalidate CloudFront Distribution
-        run: bash ${GITHUB_WORKSPACE}/bin/invalidate-distro.sh
+        run: /home/runner/work/cloud-resume-challenge/bin/invalidate-distro.sh
 
