@@ -25,5 +25,5 @@ jobs:
   distro-update:
     runs-on: ubuntu-latest
     steps:
-    - run:  bash ${$THEIA_WORKSPACE_ROOT}/bin/invalidate-distro.sh
+    - run:  bash $$THEIA_WORKSPACE_ROOT/bin/invalidate-distro.sh
 
