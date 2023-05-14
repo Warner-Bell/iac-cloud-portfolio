@@ -29,6 +29,7 @@ jobs:
     - name: Invalidate CloudFront Distribution
       run: |
         chmod u+x ./bin/invalidate-distro.sh
+        sleep 30s
         ./bin/invalidate-distro.sh
       env:
         AWS_EC2_METADATA_DISABLED: true
