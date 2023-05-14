@@ -48,11 +48,14 @@ I'll use route53 hosted zones to create DNS records that alias to a cloudfront d
 ### 8. Database
 I'll use AWS Dynamodb as the database for the sites visits counter.
 ### 9. API
+For the Api requirement of the challenge I went with Lambda [Url](https://docs.aws.amazon.com/lambda/latest/dg/lambda-urls.html). A function URL is a dedicated HTTP(S) endpoint for your Lambda function. You can create and configure a function URL through the Lambda console or the Lambda API. When you create a function URL, Lambda automatically generates a unique URL endpoint for you. Once you create a function URL, its URL endpoint never changes.
 ### 10. Python
+The code for the website views counter was writtenin python.
 ### 11. Tests
 ### 12. Infrastructure as Code
 I'm building ClordFormation templates for key components of the site, and writing bash scripts to deploy them. I use AWS CDK and AWS SAM for small deoplyments and testing. 
 ### 13. Source Control
+For source control I chose GitHub, an Internet hosting service for software development and version control using Git. It provides the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project.
 ### 14. CI/CD (Back end)
 ### 15. CI/CD (Front end)
 ###$ 16. Blog post
