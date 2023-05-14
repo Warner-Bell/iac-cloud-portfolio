@@ -88,7 +88,7 @@ async function updateCounter() {
   try {
     const response = await fetch("https://d6i2pee77rzpce3yb6ly7moygq0vckfh.lambda-url.us-east-1.on.aws/");
     const data = await response.json();
-    counter.innerHTML = `Views: ${data}! "eyes_1f440.gif"`;
+    counter.innerHTML = `Views: ${data}! 🙌🏽"eyes_1f440.gif"`;
   } catch (error) {
     console.error(error);
   }
