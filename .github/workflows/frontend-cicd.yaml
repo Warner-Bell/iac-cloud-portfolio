@@ -25,5 +25,5 @@ jobs:
   distro-update:
     runs-on: ubuntu-latest
     steps:
-    - run:  bash /bin/invalidate-distro.sh
+    - run:  bash ${github.workspace}/bin/invalidate-distro.sh
 
