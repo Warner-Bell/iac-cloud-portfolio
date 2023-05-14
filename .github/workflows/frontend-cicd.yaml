@@ -1,21 +1,21 @@
-# name: Update Website
+name: Update Website
 
-# on:
-#   push:
-#     branches:
-#     - main
+on:
+  push:
+    branches:
+    - main
 
-# jobs:
-#   website-update:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@master
-#     - uses: jakejarvis/s3-sync-action@master
-#       with:
-#         args: --acl public-read --follow-symlinks --delete
-#       env:
-#         PORTFOLIO_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#         AWS_REGION: 'us-east-1'
-#         SOURCE_DIR: 'website-prod'
+jobs:
+  website-update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --follow-symlinks --delete
+      env:
+        PORTFOLIO_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: 'us-east-1'
+        SOURCE_DIR: 'website-prod'
