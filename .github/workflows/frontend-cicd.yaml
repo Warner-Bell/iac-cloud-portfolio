@@ -22,11 +22,13 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'
         SOURCE_DIR: 'website-prod'
-  # distro-update:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Invalidate CloudFront Distribution
-  #       run: |
-  #         echo "did it work"
-  #         bash ./bin/invalidate-distro.sh -xe
+  distro-update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Invalidate CloudFront Distribution
+      run: |
+        echo "did it work"
+        chmod u+x ./bin/invalidate-distro.sh
+        ./bin/invalidate-distro.sh
 
