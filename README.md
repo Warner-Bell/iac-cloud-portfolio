@@ -59,4 +59,6 @@ For source control I chose GitHub, an Internet hosting service for software deve
 ### 14. CI/CD (Back end)
 ### 15. CI/CD (Front end)
 For this requirement of the challenge I will be using GitHub actions. GitHub actions allow you to Automate, customize, and execute your software development workflows right in your repository with GitHub Actions.
+
+I wrote a GitHub .yaml file using [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iduses) with a customization for security that will update my portfolio website upon push from the local repo.
 ### 16. Blog post
