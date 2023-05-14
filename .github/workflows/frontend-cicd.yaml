@@ -28,7 +28,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Invalidate CloudFront Distribution
       run: |
-        echo "did it work"
         chmod u+x ./bin/invalidate-distro.sh
         ./bin/invalidate-distro.sh
 
