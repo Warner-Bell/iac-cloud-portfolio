@@ -15,7 +15,7 @@ aws route53 change-resource-record-sets --hosted-zone-id Z0507821205XVUTOQ9OO2 -
 && echo "Resource Record Sets deleted successfully." \
 || echo "Failed to delete Resource Record Sets."
 
-sleep 30
+sleep 15
 
  aws cloudformation delete-stack \
  --stack-name "CRC-ddbLambdaApi"
