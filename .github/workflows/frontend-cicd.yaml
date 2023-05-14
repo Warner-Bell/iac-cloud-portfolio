@@ -25,5 +25,5 @@ jobs:
   distro-update:
     runs-on: ubuntu-latest
     steps:
-    - run:  bash /workspace/cloud-resume-challenge/bin/invalidate-distro
+    - run:  bash /home/runner/workspace/cloud-resume-challenge/bin/invalidate-distro
 
