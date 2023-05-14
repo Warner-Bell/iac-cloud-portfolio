@@ -45,6 +45,7 @@ I'll be obtaining a SSL/TLS certificate from AWS Certificate Manager to authenti
 I'll use route53 hosted zones to create DNS records that alias to a cloudfront distibution, and CNAMEs for the certificate.
 
 ### 7. Javascript
+
 ### 8. Database
 I'll use AWS Dynamodb as the database for the sites visits counter.
 ### 9. API
