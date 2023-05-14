@@ -58,4 +58,5 @@ I'm building ClordFormation templates for key components of the site, and writin
 For source control I chose GitHub, an Internet hosting service for software development and version control using Git. It provides the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project.
 ### 14. CI/CD (Back end)
 ### 15. CI/CD (Front end)
-###$ 16. Blog post
+For this requirement of the challenge I will be using GitHub actions. GitHub actions allow you to Automate, customize, and execute your software development workflows right in your repository with GitHub Actions.
+### 16. Blog post
