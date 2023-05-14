@@ -25,7 +25,7 @@ jobs:
   distro-update:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
     - name: Invalidate CloudFront Distribution
       run: |
         chmod u+x ./bin/invalidate-distro.sh
