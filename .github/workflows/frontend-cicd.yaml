@@ -26,5 +26,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Invalidate CloudFront Distribution
-        run: bash ./bin/invalidate-distro
+        run: bash ./bin/invalidate-distro.sh
 
