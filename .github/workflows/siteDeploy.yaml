@@ -10,5 +10,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Run Shell Script
-        run: bash /workspace/cloud-resume-challenge/bin/website-deploy
+      - name: Build Site
+        run: bash ./bin/website-deploy
