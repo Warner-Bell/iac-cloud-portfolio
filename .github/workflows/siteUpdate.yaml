@@ -4,6 +4,8 @@ on:
   push:
     branches:
     - main
+    paths:
+      - '/workspace/cloud-resume-challenge/website-prod/'
 
 jobs:
   website-update:

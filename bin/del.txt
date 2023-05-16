@@ -1,0 +1,29 @@
+#! /usr/bin/env bash
+set -e # stop the execution of the script if it fails
+
+aws s3 rm s3://logs.warnerbell.com --recursive
+
+aws s3 rm s3://warnerbell.com --recursive
+
+aws s3 rm s3://logs.warnerbell.com --recursive
+
+sleep 30
+
+aws route53 list-resource-record-sets --hosted-zone-id Z0507821205XVUTOQ9OO2 --query "ResourceRecordSets[?Type == 'CNAME' || Type == 'A']" | \
+jq '{Changes: [.[] | {Action: "DELETE", ResourceRecordSet: .}]}' | \
+aws route53 change-resource-record-sets --hosted-zone-id Z0507821205XVUTOQ9OO2 --change-batch file:///dev/stdin \
+&& echo "Resource Record Sets deleted successfully." \
+|| echo "Failed to delete Resource Record Sets."
+
+sleep 15
+
+ aws cloudformation delete-stack \
+ --stack-name "Site-Db-Api"
+ 
+ aws cloudformation delete-stack \
+ --stack-name "Site-Distribution"
+
+ aws s3 rm s3://logs.warnerbell.com --recursive
+
+ aws cloudformation delete-stack \
+ --stack-name "Site-Buckets"

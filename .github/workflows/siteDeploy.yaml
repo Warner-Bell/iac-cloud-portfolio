@@ -1,0 +1,14 @@
+name: Deploy Site
+on: 
+  workflow_dispatch
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Shell Script
+        run: bash /workspace/cloud-resume-challenge/bin/website-deploy

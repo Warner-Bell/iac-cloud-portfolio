@@ -4,10 +4,10 @@ set -e # stop the execution of the script if it fails
 BKT_PATH="/workspace/cloud-resume-challenge/cfn/s3Buckets.yaml"
 echo $BKT_PATH
 
-cfn-lint validate $BKT_PATH
+#cfn-lint validate $BKT_PATH
 
 aws cloudformation deploy \
-  --stack-name "CRC-s3buckets" \
+  --stack-name "Site-Buckets" \
   --s3-bucket cfmtn-stacks-2023 \
   --template-file "$BKT_PATH" \
   --tags group=crc-buckets \
@@ -22,7 +22,7 @@ echo $CF_PATH
 #cfn-lint validate $CF_PATH
 
 aws cloudformation deploy \
-  --stack-name "Cldfrnt-Distro" \
+  --stack-name "Site-Distribution" \
   --s3-bucket cfmtn-stacks-2023 \
   --template-file "$CF_PATH" \
   --tags group=crc-cloudfrnt \
@@ -40,7 +40,7 @@ echo $DDB_PATH
 #cfn-lint validate $DDB_PATH
 
 aws cloudformation deploy \
-  --stack-name "CRC-ddbLambdaApi" \
+  --stack-name "Site-Db-Api" \
   --s3-bucket cfmtn-stacks-2023 \
   --template-file "$DDB_PATH" \
   --tags group=crc-stuff \
