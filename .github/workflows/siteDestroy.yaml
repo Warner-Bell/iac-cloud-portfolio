@@ -1,4 +1,4 @@
-name: Destroy Site
+name: Dest
 on: 
   workflow_dispatch
 
@@ -9,9 +9,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-env:
+
+        env:
           AWS_REGION: 'us-east-1'
-        
 
       - name: Tear Down Site
         run: bash ./bin/website-destroy
