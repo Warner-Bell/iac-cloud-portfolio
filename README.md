@@ -1,6 +1,8 @@
 4/27/2023 
 # Cloud-Resume  [![Update Website](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/frontend-cicd.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/frontend-cicd.yaml)
 
+[![Destroy Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml) 
+
 https://warnerbell.com
 
 ## Project Background

@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 set -e # stop the execution of the script if it fails
 
-BKT_PATH="/workspace/cloud-resume-challenge/cfn/s3Buckets.yaml"
+BKT_PATH="./cfn/s3Buckets.yaml"
 echo $BKT_PATH
 
 #cfn-lint validate $BKT_PATH
@@ -16,7 +16,7 @@ aws cloudformation deploy \
 
 sleep 15
 
-CF_PATH="/workspace/cloud-resume-challenge/cfn/cloudfrnt.yaml"
+CF_PATH="./cfn/cloudfrnt.yaml"
 echo $CF_PATH
 
 #cfn-lint validate $CF_PATH
@@ -34,7 +34,7 @@ sleep 15
 #! /usr/bin/env bash
 set -e # stop the execution of the script if it fails
 
-DDB_PATH="/workspace/cloud-resume-challenge/cfn/dynamodb.yaml"
+DDB_PATH="./cfn/dynamodb.yaml"
 echo $DDB_PATH
 
 #cfn-lint validate $DDB_PATH

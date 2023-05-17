@@ -18,15 +18,15 @@ aws route53 change-resource-record-sets --hosted-zone-id Z0507821205XVUTOQ9OO2 -
 sleep 15
 
  aws cloudformation delete-stack \
- --stack-name "CRC-ddbLambdaApi"
+ --stack-name "Site-Db-Api"
  
  aws cloudformation delete-stack \
- --stack-name "Cldfrnt-Distro"
+ --stack-name "Site-Distribution"
 
  aws s3 rm s3://logs.warnerbell.com --recursive
 
  aws cloudformation delete-stack \
- --stack-name "CRC-s3buckets"
+ --stack-name "Site-Buckets"
 
 
 
