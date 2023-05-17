@@ -12,8 +12,6 @@ jobs:
         uses: actions/checkout@master
       - name: Build Site
         run: |
-          chmod u+x ./bin/website-deploy
-          sleep 5s
           ./bin/website-deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
