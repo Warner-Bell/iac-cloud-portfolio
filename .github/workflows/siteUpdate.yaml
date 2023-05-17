@@ -2,11 +2,11 @@ name: Update Site
 
 on:
   push:
+    paths:
+      - './website-prod/**'
     branches:
     - main
-    paths:
-    - './website-prod/**'
-
+      
 jobs:
   website-update:
     runs-on: ubuntu-latest
