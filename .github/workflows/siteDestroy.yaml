@@ -12,8 +12,8 @@ jobs:
         uses: actions/checkout@master
       - name: Tear Down Site
         run: |
-          chmod u+x ./bin/website-destroy
-          sleep 5s
           ./bin/website-destroy
         env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-east-1'
