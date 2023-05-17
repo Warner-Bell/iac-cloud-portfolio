@@ -3,7 +3,7 @@ name: Update Site
 on:
   push:
     paths:
-      - './website-prod/**'
+    - './website-prod/**'
     branches:
     - main
       
