@@ -59,7 +59,7 @@ For the Api requirement of the challenge I went with Lambda [Url](https://docs.a
 ### 10. Python
 The code for the lambda function wich retrieves and updates the views in the dynamodb database I'll write in python. Python is an interpreted, object-oriented, high-level programming language with dynamic semantics. Its high-level built in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components together.
 ### 11. Tests
-Testing I'm gonna just play by ear, I don't thing much thought will be required here as there will be plenty of testing in the buld process itself.
+Testing I'm gonna just play by ear, I don't thing much thought will be required here as there will be plenty of testing in the build process itself.
 ### 12. Infrastructure as Code
 I'm building ClordFormation templates for key components of the site, and writing bash scripts to deploy them. I'll use AWS CDK and or AWS SAM for small deplyments and testing. Infrastructure as Code (IaC) is the managing and provisioning of infrastructure through code instead of through manual processes.
 ### 13. Source Control
