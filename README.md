@@ -1,7 +1,9 @@
 4/27/2023 
-
+[![Deploy Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDeploy.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDeploy.yaml)
 
 [![Destroy Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml) 
+
+
 
 https://warnerbell.com
 
