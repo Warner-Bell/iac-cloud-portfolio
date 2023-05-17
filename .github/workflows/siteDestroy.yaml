@@ -1,4 +1,5 @@
-name: Dest
+name: Destroy Site
+
 on: 
   workflow_dispatch
 
