@@ -86,7 +86,7 @@ const counter = document.querySelector(".counter-number");
 
 async function updateCounter() {
   try {
-    const response = await fetch("https://d6i2pee77rzpce3yb6ly7moygq0vckfh.lambda-url.us-east-1.on.aws/");
+    const response = await fetch("https://xjieaidaaocbryn7b2vmo63ir40nahpy.lambda-url.us-east-1.on.aws/");
     const data = await response.json();
     counter.innerHTML = `<b>Visits</b> = ${data} ✌🏽`;
   } catch (error) {
