@@ -3,7 +3,7 @@
 
 [![Destroy Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml) 
 
-
+[![Update Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteUpdate.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteUpdate.yaml)
 
 https://warnerbell.com
 
