@@ -2,9 +2,9 @@
 
 [![Deploy Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDeploy.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDeploy.yaml)
 
-[![Destroy Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml) 
-
 [![Update Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteUpdate.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteUpdate.yaml)
+
+[![Destroy Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml) 
 
 https://warnerbell.com
 
