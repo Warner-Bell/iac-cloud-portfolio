@@ -5,7 +5,7 @@ on:
     branches:
     - main
     paths:
-      - '/workspace/cloud-resume-challenge/website-prod/'
+      - './website-prod/'
 
 jobs:
   website-update:
