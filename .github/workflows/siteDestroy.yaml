@@ -10,9 +10,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
-
+      - name: Tear Down Site
+        run: |
+          chmod u+x ./bin/website-destroy
+          sleep 5s
+          ./bin/website-destroy
         env:
           AWS_REGION: 'us-east-1'
-
-      - name: Tear Down Site
-        run: bash ./bin/website-destroy

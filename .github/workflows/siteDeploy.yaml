@@ -10,9 +10,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
-
+      - name: Build Site
+        run: |
+          chmod u+x ./bin/website-deploy
+          sleep 5s
+          ./bin/website-deploy
         env:
           AWS_REGION: 'us-east-1'
-
-      - name: Build Site
-        run: bash ./bin/website-deploy
