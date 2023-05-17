@@ -10,5 +10,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+        env:
+          AWS_REGION: 'us-east-1'
+
       - name: Build Site
         run: bash ./bin/website-deploy
