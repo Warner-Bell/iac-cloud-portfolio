@@ -4,9 +4,9 @@
 
 [![Destroy Site](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml/badge.svg)](https://github.com/Warner-Bell/cloud-resume-challenge/actions/workflows/siteDestroy.yaml) 
 
-# 4/27/2023 
+## 4/27/2023 
 
-# https://warnerbell.com 
+## https://warnerbell.com 
 
 ## Project Background
 I recently happened accross the concept of this challenge and thought :astonished:"That looks like a fun/useful little project I can do to learn and play in the cloud!"
