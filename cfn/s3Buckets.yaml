@@ -18,7 +18,7 @@ Resources:
       LoggingConfiguration:
         DestinationBucketName: !Ref LogsBucket
         LogFilePrefix: AccessLogs/
-    #DeletionPolicy: Retain
+    DeletionPolicy: Retain
   BucketPolicy:
     Type: 'AWS::S3::BucketPolicy'
     Properties:
@@ -46,14 +46,14 @@ Resources:
         RedirectAllRequestsTo:
           HostName: warnerbell.com
           Protocol: https
-    #DeletionPolicy: Retain
+    DeletionPolicy: Retain
 
   LogsBucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: logs.warnerbell.com
       AccessControl: Private
-    #DeletionPolicy: Retain
+    DeletionPolicy: Retain
   S3BucketPolicy:
     Type: 'AWS::S3::BucketPolicy'
     Properties:
