@@ -73,4 +73,4 @@ I wrote a GitHub .yaml file using [Workflow syntax for GitHub Actions](https://d
 ### 16. Blog post
 As I thought about how I would tackle the blog post describing my experience with the cloud-resume-challenge it occurred to me that this very README could serve as a pretty decent blog post on the subject, but as I do, I elected to go a bit further and detail my experience in a Medium.com post, that said ccheck it out [here](https://medium.com/@Warner_Bell/taking-on-the-cloud-resume-challenge-my-experience-898e78e49b61).
 
-5/16/2023
+## 5/16/2023
