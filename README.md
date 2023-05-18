@@ -77,3 +77,5 @@ As I thought about how I would tackle the blog post describing my experience wit
 
 ![image](https://github.com/Warner-Bell/cloud-resume-challenge/assets/100949697/3d121630-cc0f-43a1-a1be-b6614c256aec)
 
+[![](https://visitcount.itsvg.in/api?id=Warner-Bell&icon=3&color=1)](https://visitcount.itsvg.in)
+
