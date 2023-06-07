@@ -2,8 +2,8 @@ name: Update Site
 
 on:
   push:
-    #paths:
-    #  - 'website-prod/*'
+    paths:
+      - 'website-prod/*'
     branches:
     - main
       
