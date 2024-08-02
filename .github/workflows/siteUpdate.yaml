@@ -27,14 +27,19 @@ jobs:
   distro-update:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Wait for 30 seconds
-      run: sleep 30
-    - name: Invalidate CloudFront Distribution
-      run: |
-        ./bin/invalidate-distro.sh
-      env:
-        AWS_EC2_METADATA_DISABLED: true
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
+      - uses: actions/checkout@master
+      - name: Wait for 30 seconds
+        run: sleep 30
+      - name: Print Working Directory
+        run: pwd
+      - name: List Root Directory
+        run: ls -l ${{ github.workspace }}
+      - name: List Bin Directory
+        run: ls -l ${{ github.workspace }}/bin
+      - name: Invalidate CloudFront Distribution
+        run: |
+          ${{ github.workspace }}/bin/invalidate-distro.sh
+        env:
+          AWS_EC2_METADATA_DISABLED: true
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
