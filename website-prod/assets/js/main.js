@@ -95,5 +95,11 @@ async function updateCounter() {
 }
 updateCounter();
 
+document.addEventListener('DOMContentLoaded', function() {
+  const scroller = document.querySelector('.certifications-list');
+  const speed = 50; // Change this value to adjust scroll speed (seconds)
+  
+  scroller.style.animationDuration = `${speed}s`;
+});
 
 

@@ -1193,3 +1193,40 @@
 			}
 
 	}
+	
+	.certifications-scroller {
+  overflow: hidden;
+  background-color: white;
+  position: relative;
+  width: 100%;
+}
+
+.certifications-list {
+  display: flex;
+  animation: scroll 50s linear infinite;
+  list-style-type: none; /* Add this line to remove list bullets */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+
+.certifications-list li {
+  flex: 0 0 auto;
+  width: 200px; // Adjust width as needed
+  padding: 10px;
+  margin-right: 200px; /* Add this line to increase space between icons */
+}
+
+.certifications-list img {
+  max-width: 100%;
+  height: auto;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
