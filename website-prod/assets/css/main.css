@@ -2802,7 +2802,7 @@ body {
 }
 
 .marquee {
-  width: 100%);
+  width: (100%);
   height: var(--marquee-height);
   background-color: #111;
   color: #eee;
