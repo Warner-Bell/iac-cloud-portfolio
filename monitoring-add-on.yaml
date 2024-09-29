@@ -1,0 +1,99 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to monitor an S3-hosted website using HTTPS and send an SMS notification if it goes down or latency exceeds a threshold.
+
+Parameters:
+  WebsiteURL:
+    Type: String
+    Description: The URL of your S3-hosted website to monitor.
+
+  PhoneNumber:
+    Type: String
+    Description: The phone number to send the SMS notifications to (use E.164 format, e.g., +1234567890).
+
+Resources:
+  # SNS Topic for sending SMS notifications
+  SNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+        - Protocol: sms
+          Endpoint: !Ref PhoneNumber
+      Tags:
+        - Key: Workload
+          Value: S3-Website
+
+  # Route 53 Health Check to monitor the website using HTTPS
+  WebsiteHealthCheck:
+    Type: AWS::Route53::HealthCheck
+    Properties:
+      HealthCheckConfig:
+        Type: HTTPS
+        FullyQualifiedDomainName: !Ref WebsiteURL
+        ResourcePath: /
+        RequestInterval: 30
+        FailureThreshold: 3
+        Port: 443
+        MeasureLatency: true
+        Inverted: false
+      Tags:
+        - Key: Workload
+          Value: S3-Website
+
+  # CloudWatch Alarm to monitor if the website is down
+  WebsiteDownAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: 'Alarm when the website goes down'
+      MetricName: HealthCheckStatus
+      Namespace: AWS/Route53
+      Statistic: Minimum
+      Period: 60
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: LessThanThreshold
+      Dimensions:
+        - Name: HealthCheckId
+          Value: !Ref WebsiteHealthCheck
+      AlarmActions:
+        - !Ref SNSTopic
+      OKActions:
+        - !Ref SNSTopic
+      InsufficientDataActions:
+        - !Ref SNSTopic
+      Tags:
+        - Key: Workload
+          Value: S3-Website
+
+  # CloudWatch Alarm to monitor latency (above 500ms)
+  WebsiteLatencyAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: 'Alarm when the website latency exceeds 500ms'
+      MetricName: Latency
+      Namespace: AWS/Route53
+      Statistic: Average
+      Period: 60
+      EvaluationPeriods: 1
+      Threshold: 0.5 # Latency threshold of 500ms (0.5 seconds)
+      ComparisonOperator: GreaterThanThreshold
+      Dimensions:
+        - Name: HealthCheckId
+          Value: !Ref WebsiteHealthCheck
+      AlarmActions:
+        - !Ref SNSTopic
+      OKActions:
+        - !Ref SNSTopic
+      InsufficientDataActions:
+        - !Ref SNSTopic
+      Tags:
+        - Key: Workload
+          Value: S3-Website
+
+Outputs:
+  HealthCheckID:
+    Description: The ID of the Route 53 Health Check monitoring the website.
+    Value: !Ref WebsiteHealthCheck
+
+  SNSArn:
+    Description: The ARN of the SNS topic used for sending notifications.
+    Value: !Ref SNSTopic
