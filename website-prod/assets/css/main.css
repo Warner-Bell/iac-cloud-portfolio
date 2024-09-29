@@ -1,12 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600,600italic,700");
 @import url("fontawesome-all.min.css");
 
-/*
-	Miniport by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -220,6 +214,103 @@ input, select, textarea {
 		footer > p {
 			font-size: 1.25em;
 		}
+
+		.bio {
+			color: rgb(253, 254, 255);
+			background: transparent;
+			max-width: 930px;
+			margin: 0 auto;
+			padding: 0 20px;
+			text-align: justify;
+		}
+		
+		.text-center {
+			text-align: center;
+		}
+		
+		.container {
+			/* Define your container styles here */
+		}
+		
+		.responsive-image {
+			max-width: 100%;
+			height: auto;
+		}
+		
+		.img-fluid {
+			max-width: 100%;
+			height: auto;
+		}
+		
+		.box.style1:hover {
+			transform: translateY(-5px);
+			transition: transform 0.3s ease;
+		}
+		
+		.page-container {
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.star-background,
+		.enterprise-scene {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none; /* Ensures these don't interfere with user interaction */
+			z-index: -1; /* Places these behind your content */
+		}
+		
+		.cta-section {
+			position: relative;
+			z-index: 1; /* Ensures this is above the decorative elements */
+			text-align: center;
+			padding: 2rem 0;
+		}
+		
+		/* Add any specific styles for your enterprise scene here */
+		.enterprise-scene {
+			/* Your existing styles */
+		}
+		
+		/* Example of a simple animation for the stars */
+		@keyframes twinkle {
+			0% { opacity: 0.5; }
+			50% { opacity: 1; }
+			100% { opacity: 0.5; }
+		}
+		
+		#stars, #stars2, #stars3 {
+			animation: twinkle 3s infinite;
+		}
+		
+		#stars2 {
+			animation-delay: 1s;
+		}
+		
+		#stars3 {
+			animation-delay: 2s;
+		}
+
+		.sr-only {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+			border: 0;
+		}
+		
+		.social a:hover {
+			opacity: 0.8;
+			transition: opacity 0.3s ease;
+		}
+		
 
 /* Container */
 
