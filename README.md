@@ -61,7 +61,7 @@ The code for the lambda function wich retrieves and updates the views in the dyn
 ### 11. Tests
 Testing I'm gonna just play by ear, I don't thing much thought will be required here as there will be plenty of testing in the build process itself.
 ### 12. Infrastructure as Code
-I'm building ClordFormation templates for key components of the site, and writing bash scripts to deploy them. I'll use AWS CDK and or AWS SAM for small deplyments and testing. Infrastructure as Code (IaC) is the managing and provisioning of infrastructure through code instead of through manual processes.
+I'm building CloudFormation templates for key components of the site, and writing bash scripts to deploy them. I'll use AWS CDK and or AWS SAM for small deplyments and testing. Infrastructure as Code (IaC) is the managing and provisioning of infrastructure through code instead of through manual processes.
 ### 13. Source Control
 For source control I chose GitHub, an Internet hosting service for software development and version control using Git. It provides the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project.
 ### 14. CI/CD (Back end)
