@@ -8,7 +8,7 @@
 
 ## https://warnerbell.com 
 
-## Project Background-
+## Project Background- Cloud Resume Challenge
 I recently happened accross the concept of this challenge and thought :astonished:"That looks like a fun/useful little project I can do to learn and play in the cloud!"
 
 I found all the info [here.](https://cloudresumechallenge.dev/)  There's a book, a site and apparently a whole community surrounding this idea, I learned all the particulars by sniffing around there, but by then I had already determined I was gonna do this thing my way! :sunglasses: (but stick to the outline)
